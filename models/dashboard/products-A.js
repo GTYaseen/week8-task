@@ -1,4 +1,4 @@
-const client = require("../db");
+const client = require("../../db");
 
 async function ViewProducts(req, res) {
   const result = await client.query(`SELECT * FROM products`);

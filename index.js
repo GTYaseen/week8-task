@@ -1,15 +1,11 @@
 const express = require("express");
 const app = express();
-const admins = require("./routes/admins");
-const users = require("./routes/users");
-const productsA = require("./routes/products-A");
-const productsU = require("./routes/products-U");
-const ordersA = require("./routes/orders-A");
-const ordersU = require("./routes/orders-U");
+const dashboard = require("./routes/dashboard");
+const client = require("./routes/client");
 const bodyParser = require('body-parser');
 const fileUpload = require("express-fileupload");
 const {uploadFile} = require("@uploadcare/upload-client");
-const { AcheckAuth, UcheckAuth }=require('./middleware')
+
 
 
 const port = 3000;
@@ -50,12 +46,9 @@ app.post("/v2/upload", async function (req, res) {
   res.send(result);
 });
 
-app.use("/api/v1/admins", admins);
-app.use("/api/v1/users", users);
-app.use("/api/v1/productsU", UcheckAuth, productsU);
-app.use("/api/v1/productsA", AcheckAuth, productsA);
-app.use("/api/v1/ordersU", UcheckAuth, ordersU);
-app.use("/api/v1/ordersA", AcheckAuth, ordersA);
+
+app.use("/api/v1/dashboard", dashboard);
+app.use("/api/v1/client", client);
 
 
 app.listen(port, () => {

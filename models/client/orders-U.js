@@ -1,4 +1,4 @@
-const client = require("../db");
+const client = require("../../db");
 
 async function AddOrder(req, res) {
   const { items, userid, address, orderdate, status } = req.body;
@@ -8,6 +8,7 @@ async function AddOrder(req, res) {
   );
   res.send(result.rows);
 }
+
 module.exports = {
   AddOrder,
 };
