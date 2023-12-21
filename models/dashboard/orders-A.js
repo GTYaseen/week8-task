@@ -8,7 +8,6 @@ async function changeStatus(req, res) {
   const { status } = req.body;
   const { id } = req.params;
 
-  // Validate that the status is one of the allowed values
   const validStatusValues = ['PENDING', 'PREPARING', 'DELIVERED'];
   if (!validStatusValues.includes(status)) {
     return res.status(400).send('Invalid status value');

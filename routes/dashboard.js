@@ -22,6 +22,6 @@ router.put("/order/changeStatus/:id", AcheckAuth, changeStatus);
 router.get("/product/view", AcheckAuth, ViewProducts);
 router.post("/product/add", AcheckAuth, AddProduct);
 router.put("/product/update/:id", AcheckAuth, UpdateProduct);
-router.delete("/delete/:id", AcheckAuth, DeleteProduct);
+router.delete("/product/delete/:id", AcheckAuth, DeleteProduct);
 
 module.exports = router;

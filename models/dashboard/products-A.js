@@ -5,18 +5,28 @@ async function ViewProducts(req, res) {
     let { search, limit } = req.query;
     let query = "SELECT * FROM products";
 
+    // Build the WHERE clause if search parameter is provided
     if (search) {
       query += " WHERE name ILIKE $1";
       search = `%${search}%`;
     }
 
+    // Add LIMIT clause if limit parameter is provided
     if (limit) {
       query += " LIMIT $2";
     }
 
-    const result = await client.query(query, limit ? [search, limit] : [search]);
+    // Execute the query with appropriate parameters
+    const result = await client.query(
+      query,
+      limit ? [search, limit] : [search]
+    );
 
-    res.send(result.rows);
+    if (result.rows.length === 0) {
+      res.status(404).send("No products found.");
+    } else {
+      res.send(result.rows);
+    }
   } catch (error) {
     console.error("Error retrieving products:", error);
     res.status(500).send("Internal Server Error");
