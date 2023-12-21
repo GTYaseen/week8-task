@@ -10,9 +10,9 @@ router.post("/register", UserRegister);
 router.post("/login", UserLogin);
 
 //order
-router.post("/add",UcheckAuth, AddOrder);
+router.post("/order/add",UcheckAuth, AddOrder);
 
 //product
-router.get("/view",UcheckAuth,  ViewProducts);
+router.get("/product/view",UcheckAuth,  ViewProducts);
 
 module.exports = router;

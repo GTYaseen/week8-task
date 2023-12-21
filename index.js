@@ -48,6 +48,7 @@ app.post("/v2/upload", async function (req, res) {
 
 
 app.use("/api/v1/dashboard", dashboard);
+
 app.use("/api/v1/client", client);
 
 
